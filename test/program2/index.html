@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Program 2</title>
+</head>
+<body>
+    <input type = "number" id="input">
+    <br><br><br>
+    <table id="the-table">
+        
+    </table>
+</body>
+<script >
+"use strict";
+let inPut = document.getElementById("input")
+inPut.addEventListener("click",showTable)
+
+function showTable(){
+let text = "";
+let x = document.getElementById("input").value
+for(let i=1;i<(2*x);i++){
+    text += "<tr>"
+    for(let k=1;k<=x;k++){
+        text += `<td>${(k==x-i+1)||(k==x)||(i==x)||(2*x-i==x-k+1)?"*":" "}<td>`
+    }
+}
+document.getElementById("the-table").innerHTML = text;
+}
+</script>
+</html>
