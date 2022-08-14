@@ -8,8 +8,8 @@ Now modify the above function to also work for objects that may have other
   This new function should update all of the leaves of the object tree.
 */
 
-const samritiObject = {
-  naem: "Samriti",
+const samObject = {
+  naem: "Sam",
   salary: 3,
   age: 5,
   bf: 0,
@@ -17,13 +17,13 @@ const samritiObject = {
     school: 5,
     college: 3,
     office: {
-      crush_name: "ajay",
+      crush_name: "jay",
       crush_height: 168,
       crush_salary: 3,
     },
   },
 };
-const newObj = foo(samritiObject);
+const newObj = foo(samObject);
 console.log(`the newObj`, newObj);
 
 function foo(givenObject) {
