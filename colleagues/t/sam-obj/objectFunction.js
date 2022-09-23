@@ -23,7 +23,7 @@ const samObject = {
     },
   },
 };
-const newObj = foo(samObject);
+const newObj = f(samObject);
 console.log(`the newObj`, newObj);
 
 function f(x) {
