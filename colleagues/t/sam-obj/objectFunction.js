@@ -26,17 +26,13 @@ const samObject = {
 const newObj = foo(samObject);
 console.log(`the newObj`, newObj);
 
-function foo(givenObject) {
-  const myObj = {};
-  inner(givenObject);
-  function inner(givenObj) {
-    for (let [key, value] of Object.entries(givenObj)) {
-      typeof value == "number"
-        ? (myObj[key] = value + 1)
-        : typeof value == "object"
-        ? inner(value)
-        : null;
+function f(x) {
+  const o = {};
+  i(x);
+  function i(x) {
+    for (let [k, v] of Object.entries(x)) {
+      Number(v) === v ? (o[k] = v + 1) : Object(v) === v ? i(v) : null;
     }
   }
-  return myObj;
+  return o;
 }
