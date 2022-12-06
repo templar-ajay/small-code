@@ -1,0 +1,67 @@
+//example 1
+const intervals1 = [
+  [0, 30],
+  [5, 10],
+  [15, 20],
+  [15, 20],
+  [15, 20],
+  [18, 19],
+];
+
+answer(intervals1);
+
+// example 2
+const intervals2 = [
+  [7, 10],
+  [2, 4],
+];
+answer(intervals2);
+
+//example 3
+const intervals3 = [];
+answer(intervals3);
+
+// solution
+function answer(intervals=[]) {
+  const time = [];
+  let rooms = 0;
+
+  intervals.forEach((x) => {
+    for (let i = x[0]; i < x[1]; i++) {
+      time.push(i);
+    }
+  });
+  time.sort((a, b) => a - b);
+
+  let lastValue;
+  let times;
+  time.forEach((x) => {
+    if (x == lastValue) {
+      times++;
+      if (rooms < times) rooms++;
+    } else {
+      times = 1;
+      lastValue = x;
+    }
+  });
+
+  console.log("rooms", rooms);
+  return rooms;
+}
+
+// alternative Solution 
+function alternateAnswer(arr = []) {
+  let rooms = arr.length ? 1 : 0;
+  arr.sort((a, b) => a[1] - b[1]);
+
+  for (let i = 0; i <= arr.length - 1; i++) {
+    if (arr[i + 1] !== undefined) {
+      if (arr[i][1] <= arr[i + 1][0]) {
+      }
+      if (arr[i][1] >= arr[i + 1][0]) {
+        rooms += 1;
+      }
+    }
+  }
+  console.log(rooms);
+}

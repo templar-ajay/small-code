@@ -1,0 +1,36 @@
+// example 1
+const numbersArr1 = [3, 4, 5, 5, 3, 1];
+answer(numbersArr1);
+
+//example 2
+const numbersArr2 = [9];
+answer(numbersArr2);
+
+//example 3
+const numbersArr3 = [3, 4, 1, 5, 4, 1];
+answer(numbersArr3);
+
+//example 4
+const numbersArr4 = [7, 6];
+answer(numbersArr4);
+
+// solution
+function answer(numbersArr) {
+  const indexOfMin = numbersArr.indexOf(Math.min(...numbersArr));
+  const indexOfMax = numbersArr.lastIndexOf(Math.max(...numbersArr));
+
+  if (indexOfMax == indexOfMin) {
+    console.log(0);
+    return 0;
+  }
+
+  const numberOfSwapsNeeded =
+    numbersArr.length -
+    1 -
+    indexOfMax +
+    indexOfMin +
+    (numbersArr.length - indexOfMax + indexOfMin < numbersArr.length ? 0 : -1);
+
+  console.log(numberOfSwapsNeeded);
+  return numberOfSwapsNeeded;
+}

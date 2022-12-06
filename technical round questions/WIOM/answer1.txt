@@ -1,0 +1,70 @@
+// question 1
+const nums1 = [0, 1, 3, 50, 75];
+let lower1 = 0;
+let upper1 = 99;
+
+// answer 1
+answer(nums1, lower1, upper1);
+
+// question 2
+const nums2 = [-1];
+let lower2 = -1;
+let upper2 = -1;
+//answer 2
+answer(nums2, lower2, upper2);
+
+// answer function - returns and console logs the answer
+function answer(nums, min, max) {
+  const ret = [];
+  let str = "";
+  let nextIndex = min;
+
+  for (const x of [...nums, max]) {
+    for (let i = nextIndex; i <= max; i++) {
+      if (i == x && i != max) {
+        if (str.length) {
+          if (i != nextIndex + 1) {
+            str += `->${i - 1}`;
+          }
+          ret.push(str);
+          str = "";
+        }
+        nextIndex = i + 1;
+        break;
+      } else if (i != x) {
+        if (!str.length) {
+          str += i;
+        }
+      } else {
+        if (str.length) {
+          if (i != nextIndex + 1) {
+            str += `->${i}`;
+          }
+          ret.push(str);
+          str = "";
+        }
+      }
+    }
+  }
+  console.log(ret);
+  // if needed
+  return ret;
+}
+
+// Alternate answer function - returns the answer
+const alternateAnswer = (numArr, min, max) =>
+  String(
+    Array.from(
+      Array.from(Array(max - min + 1).keys())
+        .map((x) => x + min)
+        .map((x) => (numArr.includes(x) ? " " : x))
+    )
+      .join(" ")
+      .trim()
+      .split("  ")
+      .map((x) => x.split(" ").filter((x) => x))
+      .reduce((c, i) => c + "," + i[0] + "<-" + i[i.length - 1])
+  ).split(",");
+
+console.log(alternateAnswer(nums1, lower1, upper1));
+console.log(alternateAnswer(nums2, lower2, upper2));
